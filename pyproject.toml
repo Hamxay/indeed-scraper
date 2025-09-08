@@ -16,10 +16,39 @@ dependencies = [
     "fastapi (>=0.111.0,<1.0.0)",
     "uvicorn[standard] (>=0.30.0,<1.0.0)",
     "python-dotenv (>=1.1.1,<2.0.0)",
-    "openai (>=1.106.1,<2.0.0)"
+    "openai (>=1.106.1,<2.0.0)",
+    "httpx (>=0.25.0,<1.0.0)"
 ]
 
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+
+[tool.poetry]
+name = "indeed"
+version = "0.1.0"
+description = "Indeed job scraper application"
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+packages = [{include = "app"}]
+
+[tool.poetry.dependencies]
+python = "^3.13"
+camoufox = {extras = ["geoip"], version = "^0.4.11"}
+sqlite-database = "^0.7.11"
+playwright = "^1.42.0"
+python-dateutil = "^2.9.0"
+pandas = "^2.3.2"
+fastapi = "^0.111.0"
+uvicorn = {extras = ["standard"], version = "^0.30.0"}
+python-dotenv = "^1.1.1"
+openai = "^1.106.1"
+httpx = "^0.25.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.0"
+black = "^24.0.0"
+flake8 = "^7.0.0"
+mypy = "^1.8.0"

@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Modern recruitment dashboard theme */
+    --background: 244 15% 97%;
+    --foreground: 221 39% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 221 39% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 221 39% 11%;
+
+    /* Professional blue-teal primary */
+    --primary: 201 96% 32%;
+    --primary-foreground: 0 0% 98%;
+    --primary-glow: 201 96% 45%;
+
+    /* Soft secondary */
+    --secondary: 220 15% 95%;
+    --secondary-foreground: 221 39% 11%;
+
+    /* Muted backgrounds */
+    --muted: 220 13% 95%;
+    --muted-foreground: 220 9% 46%;
+
+    /* Accent teal */
+    --accent: 175 85% 85%;
+    --accent-foreground: 175 85% 15%;
+
+    /* Status colors */
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 98%;
+    --warning: 35 91% 62%;
+    --warning-foreground: 0 0% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 201 96% 32%;
+
+    --radius: 0.75rem;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(201 96% 32%), hsl(201 96% 45%));
+    --gradient-subtle: linear-gradient(180deg, hsl(244 15% 97%), hsl(220 15% 95%));
+    --gradient-success: linear-gradient(135deg, hsl(142 71% 45%), hsl(142 71% 55%));
+    
+    /* Shadows */
+    --shadow-elegant: 0 10px 25px -5px hsl(201 96% 32% / 0.1), 0 4px 6px -2px hsl(201 96% 32% / 0.05);
+    --shadow-glow: 0 0 20px hsl(201 96% 45% / 0.3);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 221 39% 11%;
+    --foreground: 0 0% 98%;
+
+    --card: 221 39% 14%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 221 39% 14%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 201 96% 45%;
+    --primary-foreground: 221 39% 11%;
+    --primary-glow: 201 96% 55%;
+
+    --secondary: 221 39% 18%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 221 39% 18%;
+    --muted-foreground: 220 9% 65%;
+
+    --accent: 175 85% 25%;
+    --accent-foreground: 175 85% 85%;
+
+    --success: 142 71% 55%;
+    --success-foreground: 0 0% 98%;
+    --warning: 35 91% 72%;
+    --warning-foreground: 0 0% 98%;
+    --destructive: 0 84% 70%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 221 39% 25%;
+    --input: 221 39% 25%;
+    --ring: 201 96% 45%;
+
+    /* Dark gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(201 96% 45%), hsl(201 96% 55%));
+    --gradient-subtle: linear-gradient(180deg, hsl(221 39% 11%), hsl(221 39% 14%));
+    --gradient-success: linear-gradient(135deg, hsl(142 71% 55%), hsl(142 71% 65%));
+    
+    --shadow-elegant: 0 10px 25px -5px hsl(0 0% 0% / 0.3), 0 4px 6px -2px hsl(0 0% 0% / 0.1);
+    --shadow-glow: 0 0 20px hsl(201 96% 55% / 0.3);
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}

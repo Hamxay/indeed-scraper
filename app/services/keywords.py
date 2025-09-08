@@ -3,7 +3,9 @@ from openai import OpenAI
 import json
 
 
-def extract_keywords_from_description(description: str, num_keywords: int = 25) -> List[str]:
+def extract_keywords_from_description(
+    description: str, num_keywords: int = 25
+) -> List[str]:
     """Extract search-ready keywords from a job description using OpenAI.
 
     Args:
@@ -34,7 +36,7 @@ def extract_keywords_from_description(description: str, num_keywords: int = 25) 
         f"{target_count}"
         " highly relevant keywords from the following job description. "
         "Return ONLY a minified JSON object with this exact schema: "
-        "{\"keywords\": [\"keyword1\", \"keyword2\", ...]} "
+        '{"keywords": ["keyword1", "keyword2", ...]} '
         "No code fences, no extra text.\n\n"
         f"JOB DESCRIPTION:\n{description.strip()}"
     )
@@ -69,7 +71,7 @@ def extract_keywords_from_description(description: str, num_keywords: int = 25) 
                 raise RuntimeError(f"Failed to parse keywords list: {exc}")
         else:
             # Last-resort: split by commas
-            keywords = [part.strip().strip('"\'') for part in text.split(",")]
+            keywords = [part.strip().strip("\"'") for part in text.split(",")]
 
     # Normalize: keep strings, strip empties, deduplicate preserving order
     seen = set()
@@ -84,8 +86,9 @@ def extract_keywords_from_description(description: str, num_keywords: int = 25) 
     return normalized[:target_count]
 
 
-
-def extract_job_titles_from_description(description: str, max_titles: int = 15) -> List[str]:
+def extract_job_titles_from_description(
+    description: str, max_titles: int = 15
+) -> List[str]:
     """Extract likely job/position titles from a job description using OpenAI.
 
     Args:
@@ -152,7 +155,7 @@ def extract_job_titles_from_description(description: str, max_titles: int = 15) 
             except Exception as exc:
                 raise RuntimeError(f"Failed to parse titles list: {exc}")
         else:
-            titles = [part.strip().strip('"\'') for part in text.split(",")]
+            titles = [part.strip().strip("\"'") for part in text.split(",")]
 
     # Normalize titles: keep strings, strip empties, dedupe (case-insensitive), Title Case
     seen = set()
@@ -167,7 +170,9 @@ def extract_job_titles_from_description(description: str, max_titles: int = 15) 
                 continue
             seen.add(lower)
             # Basic canonicalization: title case but preserve common all-caps like CNA, RN
-            words = [w if (len(w) <= 4 and w.isupper()) else w.title() for w in clean.split()]
+            words = [
+                w if (len(w) <= 4 and w.isupper()) else w.title() for w in clean.split()
+            ]
             canonical = " ".join(words)
             normalized.append(canonical)
 
@@ -177,8 +182,16 @@ def extract_job_titles_from_description(description: str, max_titles: int = 15) 
 class KeywordsService:
     """Class-based wrapper around keyword and title extraction functions."""
 
-    def extract_keywords_from_description(self, description: str, num_keywords: int = 25) -> List[str]:
-        return extract_keywords_from_description(description=description, num_keywords=num_keywords)
+    def extract_keywords_from_description(
+        self, description: str, num_keywords: int = 25
+    ) -> List[str]:
+        return extract_keywords_from_description(
+            description=description, num_keywords=num_keywords
+        )
 
-    def extract_job_titles_from_description(self, description: str, max_titles: int = 15) -> List[str]:
-        return extract_job_titles_from_description(description=description, max_titles=max_titles)
+    def extract_job_titles_from_description(
+        self, description: str, max_titles: int = 15
+    ) -> List[str]:
+        return extract_job_titles_from_description(
+            description=description, max_titles=max_titles
+        )
